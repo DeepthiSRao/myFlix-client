@@ -1,5 +1,27 @@
-$color: steelblue;
+$color: black;
+$font-size: 1.5rem;
+$padding: 10px;
+$margin: 10px;
+$borde-radius: 5px;
+$background-color: lightgray;
+$image-height: 500px;
+$image-width: 300px;
 
-my-flix {
+.main-view {
     color: $color;
+    font-size: $font-size;
+    padding: $padding;
+}
+
+.movie-view button {
+    background-color: $background-color;
+    font-size: $font-size;
+    margin: $margin auto;
+    border-radius: $borde-radius;
+}
+
+.movie-view img {
+    width: $image-width;
+    height: $image-height;
+    object-fit: cover;
 }
