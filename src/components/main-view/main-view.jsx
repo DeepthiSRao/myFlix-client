@@ -13,6 +13,7 @@ class MainView extends React.Component {
                     title: "Inception",
                     description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
                     genre: ["Action", "Adventure", "Sci-Fi"],
+                    director: "Christopher Nolan",
                     imagePath: "https://m.media-amazon.com/images/I/5103Iag9c9L._AC_.jpg"
                 },
                 {
@@ -20,6 +21,7 @@ class MainView extends React.Component {
                     title: "The Shawshank Redemption",
                     description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
                     genre: ["Drama"],
+                    director: "Frank Darabont",
                     imagePath: "https://m.media-amazon.com/images/I/91jvQ+28WCL._SL1500_.jpg"
                 },
                 {
@@ -27,6 +29,7 @@ class MainView extends React.Component {
                     title: "Gladiator",
                     description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
                     genre: ["Action", "Adventure", "Drama"],
+                    director: "Ridley Scott",
                     imagePath: "https://m.media-amazon.com/images/I/61O9+6+NxYL._AC_SL1000_.jpg"
                 },
             ]  
