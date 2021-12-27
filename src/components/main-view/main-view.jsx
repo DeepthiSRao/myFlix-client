@@ -1,41 +1,36 @@
 import React from 'react';
-import MovieCard from '../movie-card';
-import MovieView from '../movie-view';
+import axios from 'axios';
+import MovieCard from '../movie-card/movie-card';
+import MovieView from '../movie-view/movie-view';
 
 class MainView extends React.Component {
     constructor(){
         super();
         this.state = {
             selectedMovie : null,
-            movies: [
-                {
-                    _id: 1,
-                    title: "Inception",
-                    description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
-                    genre: ["Action", "Adventure", "Sci-Fi"],
-                    director: "Christopher Nolan",
-                    imagePath: "https://m.media-amazon.com/images/I/5103Iag9c9L._AC_.jpg"
-                },
-                {
-                    _id: 2,
-                    title: "The Shawshank Redemption",
-                    description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-                    genre: ["Drama"],
-                    director: "Frank Darabont",
-                    imagePath: "https://m.media-amazon.com/images/I/91jvQ+28WCL._SL1500_.jpg"
-                },
-                {
-                    _id: 3,
-                    title: "Gladiator",
-                    description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-                    genre: ["Action", "Adventure", "Drama"],
-                    director: "Ridley Scott",
-                    imagePath: "https://m.media-amazon.com/images/I/61O9+6+NxYL._AC_SL1000_.jpg"
-                },
-            ]  
+            movies: [],
+            loading: false,
         };
     }
     
+    componentDidMount(){
+        this.setState({
+            loading: true,
+        });
+
+        axios.get('https://my-flix-movie-api.herokuapp.com/movies')
+            .then( response =>{
+                console.log(response.data)
+                this.setState({
+                    movies: response.data,
+                    loading: false
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     setSelectedMovie(newSelectedMovie){
         this.setState({
             selectedMovie: newSelectedMovie
@@ -43,13 +38,15 @@ class MainView extends React.Component {
     };
 
     render() {
-        const { movies, selectedMovie } = this.state; 
+        const { movies, selectedMovie, loading } = this.state; 
+        console.log(this.state.movies);
+
+        if(loading){
+            return <div>Loading the data.....</div>;
+        }
 
         return (
             <div className="main-view">
-                {
-                    movies.length === 0 && <span>The movie list is empty!!</span>
-                }
                 {
                     selectedMovie ?
                         <MovieView 
