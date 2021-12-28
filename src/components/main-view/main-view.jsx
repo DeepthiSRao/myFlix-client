@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
+import './main-view.scss';
+import LoginView from '../login-view/login-view';
 
 class MainView extends React.Component {
     constructor(){
@@ -10,6 +12,7 @@ class MainView extends React.Component {
             selectedMovie : null,
             movies: [],
             loading: false,
+            user: null
         };
     }
     
@@ -20,7 +23,6 @@ class MainView extends React.Component {
 
         axios.get('https://my-flix-movie-api.herokuapp.com/movies')
             .then( response =>{
-                console.log(response.data)
                 this.setState({
                     movies: response.data,
                     loading: false
@@ -34,15 +36,24 @@ class MainView extends React.Component {
     setSelectedMovie(newSelectedMovie){
         this.setState({
             selectedMovie: newSelectedMovie
-        })
-    };
+        });
+    }
+
+    onLoggedIn(user){
+        this.setState({
+            user
+        });
+    }
 
     render() {
-        const { movies, selectedMovie, loading } = this.state; 
-        console.log(this.state.movies);
+        const { movies, selectedMovie, loading, user } = this.state; 
 
         if(loading){
-            return <div>Loading the data.....</div>;
+            return <div className="loading-message">Loading the data.....</div>;
+        }
+
+        if(!user){
+            return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
         }
 
         return (
