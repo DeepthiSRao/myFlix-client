@@ -7,23 +7,23 @@ class MovieView extends React.Component{
         return(
             <div className="movie-view">
                 <div className="movie-poster">
-                    <img src={movie.imagePath} alt="movie-poster" crossOrigin="anonymous" />
+                    <img src={movie.ImagePath} alt="movie-poster" crossOrigin="anonymous" />
                 </div>
                 <div className="movie-title">
                     <span className="label">Title: </span>
-                    <span className="value">{movie.title}</span>
+                    <span className="value">{movie.Title}</span>
                 </div>
                 <div className="movie-director">
                     <span className="label">Director: </span>
-                    <span className="value">{movie.director}</span>
+                    <span className="value">{movie.Director.Name}</span>
                 </div>
                 <div className="movie-genre">
                     <span className="label">Genre: </span>
-                    <span className="value">{movie.genre.join(', ')}</span>
+                    <span className="value">{movie.Genre.Name}</span>
                 </div>
                 <div className="movie-description">
                     <span className="label">Description: </span>
-                    <span className="value">{movie.description}</span>
+                    <span className="value">{movie.Description}</span>
                 </div>
                 <button onClick={() => onBackClick(null) }>Back</button>
             </div>

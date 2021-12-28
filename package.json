@@ -4,6 +4,7 @@
   "description": "",
   "default": "src/index.html",
   "dependencies": {
+    "axios": "^0.24.0",
     "js-tokens": "^4.0.0",
     "loose-envify": "^1.4.0",
     "object-assign": "^4.1.1",
