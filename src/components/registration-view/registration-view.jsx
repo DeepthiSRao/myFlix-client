@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './registration-view.scss';
 
 const RegisterationView = () => {
@@ -27,17 +28,33 @@ const RegisterationView = () => {
             <h1>User Registration Page</h1>
             <form>
                 <label htmlFor="username">Username: </label>
-                <input type="text" name="username" id="username" onChange={handleChange} />                
+                <input type="text" 
+                    name="username" 
+                    onChange={handleChange} 
+                    required={required} />                
                 <label htmlFor="password">Password: </label>
-                <input type="password" name="password" id="password" onChange={handleChange} />
+                <input 
+                    type="password" 
+                    name="password" 
+                    onChange={handleChange} 
+                    minLength={5}
+                    required={required} />
                 <label htmlFor="email">Email: </label>
-                <input type="email" name="email" id="email" onChange={handleChange} />
+                <input 
+                    type="email" 
+                    name="email" 
+                    onChange={handleChange} 
+                    required={required} />
                 <label htmlFor="dob">DOB: </label>
-                <input type="date" name="dob" id="dob" onChange={handleChange} />
+                <input 
+                    type="date" 
+                    name="dob" 
+                    onChange={handleChange} 
+                    required={required} />
                 <button type="submit" onClick={handleSubmit}>Register</button>
             </form>
         </>
     );
 }
- 
+
 export default RegisterationView;

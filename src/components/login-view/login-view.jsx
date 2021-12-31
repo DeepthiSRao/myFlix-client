@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './login-view.scss';
 
 const LoginView = ({onLoggedIn}) => {
@@ -25,13 +26,35 @@ const LoginView = ({onLoggedIn}) => {
             <h1>User Login Page</h1>
             <form>
                 <label htmlFor="username" >Username: </label>
-                <input type="text" name="username" id="username" onChange={handleChange} />                
+                <input 
+                    type="text" 
+                    name="username" 
+                    onChange={handleChange}
+                    required="required"
+                 />              
                 <label htmlFor="password" >Password: </label>
-                <input type="password" name="password" id="password" onChange={handleChange} />
-                <button type="submit" onClick={handleSubmit}>Login</button>
+                <input 
+                    type="password" 
+                    name="password" 
+                    onChange={handleChange} 
+                    required="required" />
+                <button 
+                    type="submit"
+                    disabled={userData.username === '' && userData.password.length === ''} 
+                    onClick={handleSubmit}>
+                        Login
+                </button>
             </form>
         </>
      );
 }
  
+LoginView.propTypes = {
+    onLoggedIn: PropTypes.func.isRequired,
+}
+
 export default LoginView;
+
+
+
+
