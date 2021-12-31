@@ -29,28 +29,33 @@ const RegisterationView = () => {
             <form>
                 <label htmlFor="username">Username: </label>
                 <input type="text" 
-                    name="username" 
+                    name="username"
+                    placeholder="Enter username" 
                     onChange={handleChange} 
-                    required={required} />                
+                    required />
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Enter email"
+                    onChange={handleChange} 
+                    required />                
                 <label htmlFor="password">Password: </label>
                 <input 
                     type="password" 
                     name="password" 
+                    placeholder="Enter password"
                     onChange={handleChange} 
                     minLength={5}
-                    required={required} />
+                    required />
                 <label htmlFor="email">Email: </label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    onChange={handleChange} 
-                    required={required} />
+                
                 <label htmlFor="dob">DOB: </label>
                 <input 
                     type="date" 
-                    name="dob" 
+                    name="dob"
+                    placeholder="Enter date of birth" 
                     onChange={handleChange} 
-                    required={required} />
+                    required />
                 <button type="submit" onClick={handleSubmit}>Register</button>
             </form>
         </>

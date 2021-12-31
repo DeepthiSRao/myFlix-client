@@ -30,14 +30,16 @@ const LoginView = ({onLoggedIn}) => {
                     type="text" 
                     name="username" 
                     onChange={handleChange}
-                    required="required"
+                    placeholder="Enter email here"
+                    required
                  />              
                 <label htmlFor="password" >Password: </label>
                 <input 
                     type="password" 
                     name="password" 
+                    placeholder="Enter password here"
                     onChange={handleChange} 
-                    required="required" />
+                    required />
                 <button 
                     type="submit"
                     disabled={userData.username === '' && userData.password.length === ''} 
