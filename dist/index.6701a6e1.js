@@ -37470,21 +37470,23 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _navBarScss = require("./nav-bar.scss");
 const MyNavbar = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
         bg: "dark",
         variant: "dark",
         expand: "lg",
+        className: "navbar",
         __source: {
             fileName: "src/components/nav-bar/nav-bar.jsx",
-            lineNumber: 8
+            lineNumber: 10
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             fluid: true,
             __source: {
                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                lineNumber: 9
+                lineNumber: 11
             },
             __self: undefined,
             children: [
@@ -37492,7 +37494,7 @@ const MyNavbar = ()=>{
                     href: "#home",
                     __source: {
                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                        lineNumber: 10
+                        lineNumber: 12
                     },
                     __self: undefined,
                     children: "MyFlix"
@@ -37501,7 +37503,7 @@ const MyNavbar = ()=>{
                     className: "me-auto",
                     __source: {
                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                        lineNumber: 11
+                        lineNumber: 13
                     },
                     __self: undefined,
                     children: [
@@ -37509,7 +37511,7 @@ const MyNavbar = ()=>{
                             href: "#home",
                             __source: {
                                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                                lineNumber: 12
+                                lineNumber: 14
                             },
                             __self: undefined,
                             children: "Home"
@@ -37518,7 +37520,7 @@ const MyNavbar = ()=>{
                             href: "#user",
                             __source: {
                                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                                lineNumber: 13
+                                lineNumber: 15
                             },
                             __self: undefined,
                             children: "Profile"
@@ -37527,7 +37529,7 @@ const MyNavbar = ()=>{
                             href: "#logout",
                             __source: {
                                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                                lineNumber: 14
+                                lineNumber: 16
                             },
                             __self: undefined,
                             children: "Logout"
@@ -37548,7 +37550,7 @@ $RefreshReg$(_c, "MyNavbar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"gldll","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9MN2y"}],"97bbV":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"gldll","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9MN2y","./nav-bar.scss":"jDPsg"}],"jDPsg":[function() {},{}],"97bbV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "v1", ()=>_v1JsDefault.default
