@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, 
+         Form, 
+         Button } from 'react-bootstrap';
+         
 import './login-view.scss';
 
 const LoginView = ({onLoggedIn}) => {
@@ -22,32 +26,36 @@ const LoginView = ({onLoggedIn}) => {
     }
 
     return ( 
-        <>
-            <h1>User Login Page</h1>
-            <form>
-                <label htmlFor="username" >Username: </label>
-                <input 
-                    type="text" 
-                    name="username" 
-                    onChange={handleChange}
-                    placeholder="Enter email here"
-                    required
-                 />              
-                <label htmlFor="password" >Password: </label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Enter password here"
-                    onChange={handleChange} 
-                    required />
-                <button 
-                    type="submit"
-                    disabled={userData.username === '' && userData.password.length === ''} 
-                    onClick={handleSubmit}>
-                        Login
-                </button>
-            </form>
-        </>
+        <Card className="login-container">
+            <Card.Body>
+                <Card.Title as="h3" className="text-center">Login Page</Card.Title>
+                <Form>
+                    <Form.Group controlId="username" className="mb-3">
+                        <Form.Label>Username: </Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            name="username" 
+                            onChange={handleChange}
+                            placeholder="Enter email here"/>
+                    </Form.Group>                           
+                    <Form.Group controlId="password" className="mb-3"> 
+                        <Form.Label>Password: </Form.Label> 
+                        <Form.Control 
+                            type="password" 
+                            name="password" 
+                            onChange={handleChange}
+                            placeholder="Enter password here"/>
+                    </Form.Group>
+                    <Button 
+                        type="submit"
+                        className="login-btn"
+                        disabled={userData.username === '' && userData.password.length === ''} 
+                        onClick={handleSubmit}>
+                            Login
+                    </Button>
+                </Form>
+            </Card.Body>
+        </Card>
      );
 }
  

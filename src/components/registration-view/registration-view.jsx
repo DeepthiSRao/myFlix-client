@@ -1,5 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Card, 
+         Form, 
+         Button } from 'react-bootstrap';
+
 import './registration-view.scss';
 
 const RegisterationView = () => {
@@ -24,41 +27,52 @@ const RegisterationView = () => {
     }
 
     return (
-        <>
-            <h1>User Registration Page</h1>
-            <form>
-                <label htmlFor="username">Username: </label>
-                <input type="text" 
-                    name="username"
-                    placeholder="Enter username" 
-                    onChange={handleChange} 
-                    required />
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Enter email"
-                    onChange={handleChange} 
-                    required />                
-                <label htmlFor="password">Password: </label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Enter password"
-                    onChange={handleChange} 
-                    minLength={5}
-                    required />
-                <label htmlFor="email">Email: </label>
-                
-                <label htmlFor="dob">DOB: </label>
-                <input 
-                    type="date" 
-                    name="dob"
-                    placeholder="Enter date of birth" 
-                    onChange={handleChange} 
-                    required />
-                <button type="submit" onClick={handleSubmit}>Register</button>
-            </form>
-        </>
+        <Card className="reg-container">
+            <Card.Body>
+                    <Card.Title as="h3" className="text-center">Login Page</Card.Title>
+                    <Form>
+                        <Form.Group controlId="username" className="mb-3">
+                            <Form.Label>Username: </Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                name="username" 
+                                onChange={handleChange}
+                                placeholder="Enter email here"/>
+                        </Form.Group>                           
+                        <Form.Group controlId="email" className="mb-3"> 
+                            <Form.Label>Email: </Form.Label> 
+                            <Form.Control 
+                                type="email" 
+                                name="email" 
+                                onChange={handleChange}
+                                placeholder="Enter email here"/>
+                        </Form.Group>
+                        <Form.Group controlId="password" className="mb-3"> 
+                            <Form.Label>Password: </Form.Label> 
+                            <Form.Control 
+                                type="password" 
+                                name="password" 
+                                onChange={handleChange}
+                                placeholder="Enter password here"/>
+                        </Form.Group>
+                        <Form.Group controlId="dob" className="mb-3"> 
+                            <Form.Label>Date of Birth: </Form.Label> 
+                            <Form.Control 
+                                type="dob" 
+                                name="dob" 
+                                onChange={handleChange}
+                                placeholder="Enter date of birth here"/>
+                        </Form.Group>
+                        <Button 
+                            type="submit"
+                            className="reg-btn"
+                            disabled={userData.username === '' && userData.password.length === ''} 
+                            onClick={handleSubmit}>
+                                Register
+                        </Button>
+                    </Form>
+            </Card.Body>
+        </Card>
     );
 }
 

@@ -2,8 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
-import './main-view.scss';
 import LoginView from '../login-view/login-view';
+import MyNavbar from '../nav-bar/nav-bar';
+import { v4 as uuidv4 } from 'uuid';
+import { Row,
+         Col } from 'react-bootstrap';
+
+import './main-view.scss';
 
 class MainView extends React.Component {
     constructor(){
@@ -57,20 +62,26 @@ class MainView extends React.Component {
         }
 
         return (
-            <div className="main-view">
+            <>
+                <MyNavbar />
+                <Row className="main-view justify-content-md-center">
                 {
                     selectedMovie ?
-                        <MovieView 
-                            movie={selectedMovie} 
-                            onBackClick={(newSelectedMovie) => this.setSelectedMovie(newSelectedMovie)}/>
+                        <Col md={8}>
+                            <MovieView 
+                                movie={selectedMovie} 
+                                onBackClick={(newSelectedMovie) => this.setSelectedMovie(newSelectedMovie)}/>
+                        </Col>
                         : movies.map((movie) =>(
-                            <MovieCard 
-                                key={movie._id} 
-                                movie={movie} 
-                                onMovieClick={(movie) => this.setSelectedMovie(movie)} />
+                            <Col md={4} key={movie._id} className="g-4">
+                                <MovieCard 
+                                    movie={movie} 
+                                    onMovieClick={(movie) => this.setSelectedMovie(movie)} />
+                            </Col>
                         ))
                 }
-            </div>
+                </Row>
+            </>
         );
     }
 }
