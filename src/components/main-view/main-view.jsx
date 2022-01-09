@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import LoginView from '../login-view/login-view';
-import MyNavbar from '../nav-bar/nav-bar';
-import { v4 as uuidv4 } from 'uuid';
+import { API_URL } from '../../utils/constant';
 import { Row,
          Col } from 'react-bootstrap';
 
@@ -22,20 +22,32 @@ class MainView extends React.Component {
     }
     
     componentDidMount(){
+        const accessToken = localStorage.getItem('token');
+
+        if(accessToken !== null){
+            this.setState({
+                user: localStorage.getItem('user')
+            });
+            this.getMovies(accessToken);
+        }  
+    }
+
+    getMovies(token){
         this.setState({
             loading: true,
         });
-
-        axios.get('https://my-flix-movie-api.herokuapp.com/movies')
-            .then( response =>{
-                this.setState({
-                    movies: response.data,
-                    loading: false
-                });
-            })
-            .catch(error => {
-                console.log(error);
+        axios.get(`${API_URL}/movies`,{
+            headers: { Authorization: `Bearer ${token}`}
+        })
+        .then( response =>{
+            this.setState({
+                movies: response.data,
+                loading: false
             });
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     setSelectedMovie(newSelectedMovie){
@@ -44,12 +56,25 @@ class MainView extends React.Component {
         });
     }
 
-    onLoggedIn(user){
+    onLoggedIn(authData){
+        console.log(authData);
         this.setState({
-            user
+            user : authData.user.Username
         });
+
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.Username);
+        this.getMovies(authData.token);
     }
 
+    onLogout(){
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setState({
+            user: null
+        });
+    }
+    
     render() {
         const { movies, selectedMovie, loading, user } = this.state; 
 
@@ -58,12 +83,17 @@ class MainView extends React.Component {
         }
 
         if(!user){
-            return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            return(
+                <Row>
+                    <Col>
+                        <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+                    </Col>
+                </Row>
+            ) 
         }
 
         return (
-            <>
-                <MyNavbar />
+            <Router>
                 <Row className="main-view justify-content-md-center">
                 {
                     selectedMovie ?
@@ -73,7 +103,7 @@ class MainView extends React.Component {
                                 onBackClick={(newSelectedMovie) => this.setSelectedMovie(newSelectedMovie)}/>
                         </Col>
                         : movies.map((movie) =>(
-                            <Col md={4} key={movie._id} className="g-4">
+                            <Col md={4} key={movie._id} className="g-4 px-2">
                                 <MovieCard 
                                     movie={movie} 
                                     onMovieClick={(movie) => this.setSelectedMovie(movie)} />
@@ -81,7 +111,7 @@ class MainView extends React.Component {
                         ))
                 }
                 </Row>
-            </>
+            </Router>
         );
     }
 }
