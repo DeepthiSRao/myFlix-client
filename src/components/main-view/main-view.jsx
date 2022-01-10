@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import MovieCard from '../movie-card/movie-card';
-import MovieView from '../movie-view/movie-view';
+import RegisterationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import { API_URL } from '../../utils/constant';
 import { Row,
@@ -50,12 +50,6 @@ class MainView extends React.Component {
         });
     }
 
-    setSelectedMovie(newSelectedMovie){
-        this.setState({
-            selectedMovie: newSelectedMovie
-        });
-    }
-
     onLoggedIn(authData){
         console.log(authData);
         this.setState({
@@ -78,39 +72,54 @@ class MainView extends React.Component {
     render() {
         const { movies, selectedMovie, loading, user } = this.state; 
 
-        if(loading){
-            return <div className="loading-message">Loading the data.....</div>;
-        }
-
-        if(!user){
-            return(
-                <Row>
-                    <Col>
-                        <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-                    </Col>
-                </Row>
-            ) 
-        }
-
         return (
-            <Router>
+            <Router> 
                 <Row className="main-view justify-content-md-center">
-                {
-                    selectedMovie ?
-                        <Col md={8}>
-                            <MovieView 
-                                movie={selectedMovie} 
-                                onBackClick={(newSelectedMovie) => this.setSelectedMovie(newSelectedMovie)}/>
-                        </Col>
-                        : movies.map((movie) =>(
-                            <Col md={4} key={movie._id} className="g-4 px-2">
-                                <MovieCard 
-                                    movie={movie} 
-                                    onMovieClick={(movie) => this.setSelectedMovie(movie)} />
+                    {/* 1. Default path */}
+                    <Route exact path="/" render={() => {
+                        if(!user){
+                            return 
+                                <Col>
+                                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                                </Col>
+                        }
+                        if(movies.length === 0)
+                            return <div className="main-view">No data available to display!!!!</div>
+                        
+                        return movies.map((movie) =>(
+                                <Col md={4} key={movie._id} className="g-4 px-2">
+                                    <MovieCard movie={movie} />
+                                </Col>
+                        ));
+                    }} />  
+                    {/* 2. Register endpoint */}
+                    <Route path="/register" render={() => {
+                        if(user) return <Redirect to="/" />
+                        return
+                            <Col>
+                                <RegisterationView />
                             </Col>
-                        ))
-                }
-                </Row>
+                    }} />
+                    {/* 3.Movie end point */}
+                    <Route path="/movies/:movieId" render={({ match, history }) => {
+                        if(!user){
+                            return 
+                                <Col>
+                                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                                </Col>
+                        }
+                        if(movies.length === 0)
+                            return <div className="main-view">No data available to display!!!!</div>
+                        
+                        return
+                            <Col md={8}>
+                                <MovieView 
+                                    movie={movies.find(m => m.id ===match.param.movieId)} 
+                                    onBackClick={() => history.goBack() }
+                                    />
+                            </Col>
+                    }} />
+                </Row>             
             </Router>
         );
     }

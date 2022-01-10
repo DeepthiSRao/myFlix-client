@@ -16,6 +16,7 @@ const LoginView = ({onLoggedIn}) => {
         password: ''
     });
     const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState("");
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -36,7 +37,7 @@ const LoginView = ({onLoggedIn}) => {
     const handleSubmit = e => {
         e.preventDefault(); 
         const { username:Username, password: Password } = userData;
-
+        
         //form can be submitted if there are no validation errors. 
         let isValid = Object.values(errors).every(error => error.length === 0);
         console.log(isValid);
@@ -51,6 +52,7 @@ const LoginView = ({onLoggedIn}) => {
                 data && onLoggedIn(data);
              })
              .catch(e =>{
+                setMessage("User doesn't exists. Check username or password.");
                 console.log('no such user exists!!!');
              });
     }
@@ -59,7 +61,13 @@ const LoginView = ({onLoggedIn}) => {
         <Card className="login-container">
             <Card.Body>
                 <Card.Title as="h3" className="text-center">Login Page</Card.Title>
-
+                {message && (
+                        <div className="form-group">
+                            <div className="alert alert-danger my-1 py-2" role="alert">
+                                {message}
+                            </div>
+                        </div>
+                )}
                 <Form>
                     <Form.Group controlId="username" className="mb-3">
                         <Form.Label>Username: </Form.Label>
@@ -107,7 +115,3 @@ LoginView.propTypes = {
 }
 
 export default LoginView;
-
-
-
-
