@@ -9,6 +9,7 @@ import { Card,
 import './login-view.scss';
 import { validate } from '../../utils/validate';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginView = ({onLoggedIn}) => {
     const [userData, setUserData] = React.useState({
@@ -104,6 +105,9 @@ const LoginView = ({onLoggedIn}) => {
                         onClick={handleSubmit}>
                             Login
                     </Button>
+                    <Link to='/register'>
+                        <Button variant="link" className="d-flex mx-auto">New User! Signup</Button>
+                    </Link>
                 </Form>
             </Card.Body>
         </Card>

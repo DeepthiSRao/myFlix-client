@@ -1,14 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import MovieCard from '../movie-card/movie-card';
 import RegisterationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
+import MovieView from '../movie-view/movie-view';
+import DirectorView from '../director-view/director-view';
+import GenreView from '../genre-view/genre-view';
 import { API_URL } from '../../utils/constant';
 import { Row,
          Col } from 'react-bootstrap';
 
 import './main-view.scss';
+import MyNavbar from '../nav-bar/nav-bar';
 
 class MainView extends React.Component {
     constructor(){
@@ -69,21 +73,25 @@ class MainView extends React.Component {
         });
     }
     
+    if(loading){
+        return <div className="loading-message">Loading the data.....</div>;
+    }
+
     render() {
         const { movies, selectedMovie, loading, user } = this.state; 
 
         return (
-            <Router> 
+            <Router>
+                <Route exact path="/" render={() => {
+                    if(!user)
+                        return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                    else
+                        return <MyNavbar user={user} />
+                }} />
                 <Row className="main-view justify-content-md-center">
                     {/* 1. Default path */}
                     <Route exact path="/" render={() => {
-                        if(!user){
-                            return 
-                                <Col>
-                                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-                                </Col>
-                        }
-                        if(movies.length === 0)
+                        if(user && movies.length === 0)
                             return <div className="main-view">No data available to display!!!!</div>
                         
                         return movies.map((movie) =>(
@@ -95,30 +103,76 @@ class MainView extends React.Component {
                     {/* 2. Register endpoint */}
                     <Route path="/register" render={() => {
                         if(user) return <Redirect to="/" />
-                        return
+                        return(
                             <Col>
                                 <RegisterationView />
                             </Col>
+                        );
                     }} />
                     {/* 3.Movie end point */}
                     <Route path="/movies/:movieId" render={({ match, history }) => {
                         if(!user){
-                            return 
+                            return (
                                 <Col>
                                     <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                                 </Col>
+                            );
                         }
                         if(movies.length === 0)
                             return <div className="main-view">No data available to display!!!!</div>
                         
-                        return
+                        return(
                             <Col md={8}>
-                                <MovieView 
-                                    movie={movies.find(m => m.id ===match.param.movieId)} 
+                                <MovieView
+                                    movie={movies.find(m => m._id === match.params.movieId)} 
                                     onBackClick={() => history.goBack() }
-                                    />
+                                />
                             </Col>
+                        );
                     }} />
+                {/* 4. Director Route */}
+                <Route path="/directors/:name" render={({ match, history }) =>{
+                    if(!user){
+                        return (
+                            <Col>
+                                <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                            </Col>
+                        );
+                    }
+                    if(movies.length === 0)
+                            return <div className="main-view">No data available to display!!!!</div>
+                    console.log(movies);
+
+                    return(
+                        <Col md={8}>
+                            <DirectorView
+                                director={movies.find(m => m.Director.Name === match.params.name).Director} 
+                                onBackClick={() => history.goBack() }
+                            />
+                        </Col>
+                    );
+                }} />
+                {/* 5. Genre Route */}
+                <Route path="/genres/:name" render={({ match, history }) =>{
+                    if(!user){
+                        return (
+                            <Col>
+                                <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                            </Col>
+                        );
+                    }
+                    if(movies.length === 0)
+                            return <div className="main-view">No data available to display!!!!</div>
+                        
+                    return(
+                        <Col md={8}>
+                            <GenreView
+                                genre={movies.find(m => m.Genre.Name === match.params.name).Genre} 
+                                onBackClick={() => history.goBack() }
+                            />
+                        </Col>
+                    );
+                }} />
                 </Row>             
             </Router>
         );

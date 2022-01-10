@@ -29,7 +29,7 @@ const RegisterationView = () => {
     return (
         <Card className="reg-container">
             <Card.Body>
-                    <Card.Title as="h3" className="text-center">Login Page</Card.Title>
+                    <Card.Title as="h3" className="text-center">Registration Page</Card.Title>
                     <Form>
                         <Form.Group controlId="username" className="mb-3">
                             <Form.Label>Username: </Form.Label>
@@ -58,7 +58,7 @@ const RegisterationView = () => {
                         <Form.Group controlId="dob" className="mb-3"> 
                             <Form.Label>Date of Birth: </Form.Label> 
                             <Form.Control 
-                                type="dob" 
+                                type="date"
                                 name="dob" 
                                 onChange={handleChange}
                                 placeholder="Enter date of birth here"/>

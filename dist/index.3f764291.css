@@ -1,0 +1,63 @@
+.movie-img {
+  height: 18rem;
+  object-fit: cover;
+}
+.reg-container {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 60%;
+  min-width: 480px;
+}
+
+.reg-btn {
+  width: 100%;
+  border-radius: 5px;
+}
+.login-container {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 60%;
+  min-width: 480px;
+}
+
+.login-btn {
+  width: 100%;
+  border-radius: 5px;
+}
+.main-view {
+  display: inline-block;
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.loading-message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  font-size: 32px;
+  color: white;
+}
+.movie-poster {
+  width: 80%;
+  object-fit: cover;
+}
+
+.label {
+  color: #2b2c2c;
+  font-style: italic;
+  font-weight: 800;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Teko", sans-serif !important;
+}
+/*# sourceMappingURL=index.3f764291.css.map */
