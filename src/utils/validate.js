@@ -8,6 +8,8 @@ export const validate = (fieldName, value) => {
                 errors.username = 'Username is required';
             else if(!/^[a-zA-Z0-9_]*$/.test(value))
                 errors.username = 'Username must contain alphanumeric characters only';
+            else if(value.length < 5)
+                errors.username = 'Username must conatin atleast 5 characters';
             else
                 errors.username = '';
             break;

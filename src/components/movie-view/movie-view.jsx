@@ -12,7 +12,7 @@ class MovieView extends React.Component{
 
         return(
             <div className="movie-view d-grid gap-2">
-                <Image src={movie.ImagePath} alt="movie-poster" className="movie-poster mx-auto" crossOrigin="anonymous" />
+                <Image src={movie.ImagePath} alt="movie-poster" className="mx-auto" crossOrigin="anonymous" style={{ width: 660, height: 'auto' }}/>
                 <div className="movie-title">
                     <span className="label">Title: </span>
                     <span className="value">{movie.Title}</span>
@@ -28,14 +28,16 @@ class MovieView extends React.Component{
                 <div className="movie-description">
                     <span className="label">Description: </span>
                     <span className="value">{movie.Description}</span>
-                </div> 
-                <Button variant="success link" className="mx-auto" onClick={() => onBackClick()}>Back</Button>                   
-                <Link to={`/directors/${movie.Director.Name}`}>
-                    <Button variant="success link">Director</Button>
-                </Link>
-                <Link to={`/genres/${movie.Genre.Name}`}>
-                    <Button variant="success link">Genre</Button>
-                </Link>
+                </div>
+                <div className='btn-group mx-2'>
+                    <Button variant="success link" onClick={() => onBackClick()}>Back</Button>                   
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                        <Button variant="success link">Director</Button>
+                    </Link>
+                    <Link to={`/genres/${movie.Genre.Name}`}>
+                        <Button variant="success link">Genre</Button>
+                    </Link>
+                </div>     
             </div>
         );
     }

@@ -13,12 +13,12 @@ import { Row,
 
 import './main-view.scss';
 import MyNavbar from '../nav-bar/nav-bar';
+import ProfileView from '../profile-view/profile-view';
 
 class MainView extends React.Component {
     constructor(){
         super();
         this.state = {
-            selectedMovie : null,
             movies: [],
             loading: false,
             user: null
@@ -30,7 +30,7 @@ class MainView extends React.Component {
 
         if(accessToken !== null){
             this.setState({
-                user: localStorage.getItem('user')
+                user: JSON.parse(localStorage.getItem('user'))
             });
             this.getMovies(accessToken);
         }  
@@ -55,13 +55,12 @@ class MainView extends React.Component {
     }
 
     onLoggedIn(authData){
-        console.log(authData);
         this.setState({
-            user : authData.user.Username
+            user : authData.user
         });
 
         localStorage.setItem('token', authData.token);
-        localStorage.setItem('user', authData.user.Username);
+        localStorage.setItem('user', JSON.stringify(authData.user));
         this.getMovies(authData.token);
     }
 
@@ -78,7 +77,7 @@ class MainView extends React.Component {
     }
 
     render() {
-        const { movies, selectedMovie, loading, user } = this.state; 
+        const { movies, loading, user } = this.state; 
 
         return (
             <Router>
@@ -95,7 +94,7 @@ class MainView extends React.Component {
                             return <div className="main-view">No data available to display!!!!</div>
                         
                         return movies.map((movie) =>(
-                                <Col md={4} key={movie._id} className="g-4 px-2">
+                                <Col md={4} key={movie._id} className="g-4 px-5">
                                     <MovieCard movie={movie} />
                                 </Col>
                         ));
@@ -123,6 +122,7 @@ class MainView extends React.Component {
                         
                         return(
                             <Col md={8}>
+                                <MyNavbar />
                                 <MovieView
                                     movie={movies.find(m => m._id === match.params.movieId)} 
                                     onBackClick={() => history.goBack() }
@@ -141,10 +141,10 @@ class MainView extends React.Component {
                     }
                     if(movies.length === 0)
                             return <div className="main-view">No data available to display!!!!</div>
-                    console.log(movies);
 
                     return(
                         <Col md={8}>
+                            <MyNavbar />
                             <DirectorView
                                 director={movies.find(m => m.Director.Name === match.params.name).Director} 
                                 onBackClick={() => history.goBack() }
@@ -166,10 +166,31 @@ class MainView extends React.Component {
                         
                     return(
                         <Col md={8}>
+                            <MyNavbar />
                             <GenreView
                                 genre={movies.find(m => m.Genre.Name === match.params.name).Genre} 
                                 onBackClick={() => history.goBack() }
                             />
+                        </Col>
+                    );
+                }} />
+                {/* 6. Profile Route */}
+                <Route path="/profile" render={() =>{
+                    if(!user){
+                        return (
+                            <Col>
+                                <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                            </Col>
+                        );
+                    }
+
+                    if(movies.length === 0)
+                            return <div className="main-view">No data available to display!!!!</div>
+                        
+                    return(
+                        <Col>
+                            <MyNavbar />
+                            <ProfileView user={user}/> 
                         </Col>
                     );
                 }} />

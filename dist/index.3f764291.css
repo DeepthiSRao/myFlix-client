@@ -44,7 +44,8 @@
   color: white;
 }
 .movie-poster {
-  width: 80%;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
 }
 
@@ -54,7 +55,16 @@
   font-weight: 800;
 }
 
-body {
+.btn-group {
+  display: inline-block;
+}
+.btn-group a {
+  margin-left: 10px;
+}
+.navbar {
+  margin-bottom: 10px;
+}
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;

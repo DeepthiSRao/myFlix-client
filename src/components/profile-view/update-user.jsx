@@ -6,13 +6,12 @@ import { Card,
          Form, 
          Button } from 'react-bootstrap';
 import { validate } from '../../utils/validate';
-import { Link } from 'react-router-dom';
-import './login-view.scss';
 
-const LoginView = ({onLoggedIn}) => {
+const UpdateUser = ({user}) => {
     const [userData, setUserData] = React.useState({
-        username : '',
-        password: ''
+        username : `${user.Username}`,
+        password: '',
+        email: `${user.Email}`
     });
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState("");
@@ -35,31 +34,36 @@ const LoginView = ({onLoggedIn}) => {
 
     const handleSubmit = e => {
         e.preventDefault(); 
-        const { username:Username, password: Password } = userData;
         
         //form can be submitted if there are no validation errors. 
         let isValid = Object.values(errors).every(error => error.length === 0);
-        console.log(isValid);
+        const token = localStorage.getItem('token');
 
         isValid && 
-        axios.post(`${API_URL}/login`,{
-                Username,
-                Password
+        axios.put(`${API_URL}/users/${user.Username}`,{
+                Username : userData.username || user.Username,
+                Password : userData.password || user.Password,
+                Email : userData.email || user.Email,
+                Birthday : user.Birthday
+            },{
+                headers: { Authorization: `Bearer ${token}`}
             })
-             .then(response =>{
+            .then(response =>{
                 const data = response.data;
-                data && onLoggedIn(data);
-             })
-             .catch(error =>{
+                setMessage("User info updated");
+                localStorage.setItem('user', JSON.stringify(data));
+                window.location.reload();
+            })
+            .catch(e =>{
                 setMessage("User doesn't exists. Check username or password.");
-                console.log(`no such user exists!!! ${error}`);
-             });
+                console.log('no such user exists!!!');
+            });
     }
 
     return ( 
-        <Card className="login-container">
+        <Card>
             <Card.Body>
-                <Card.Title as="h2" className="text-center">Login Page</Card.Title>
+                <Card.Title as="h4" className="text-center">Want to change some info?</Card.Title>
                 {message && (
                         <div className="form-group">
                             <div className="alert alert-danger my-1 py-2" role="alert">
@@ -87,7 +91,7 @@ const LoginView = ({onLoggedIn}) => {
                         <Form.Control 
                             type="password" 
                             name="password" 
-                            value={userData.password || ''}
+                            value={userData.password}
                             onChange={handleChange}
                             placeholder="Enter password here"
                             isInvalid={!!errors.password}
@@ -96,24 +100,31 @@ const LoginView = ({onLoggedIn}) => {
                             {errors.password}
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <Form.Group controlId="email" className="mb-3"> 
+                        <Form.Label>e-mail: </Form.Label> 
+                        <Form.Control 
+                            type="email" 
+                            name="email" 
+                            value={userData.email || ''}
+                            onChange={handleChange}
+                            placeholder="Enter email here"
+                            isInvalid={!!errors.email}
+                            required />                       
+                        <Form.Control.Feedback type="invalid">
+                            {errors.email}
+                        </Form.Control.Feedback>
+                    </Form.Group>
                     <Button 
                         type="submit"
                         className="login-btn"
-                        disabled={!userData.email && !userData.password}
+                        disabled={!userData.password}
                         onClick={handleSubmit}>
-                            Login
+                            Update
                     </Button>
-                    <Link to='/register'>
-                        <Button variant="link" className="d-flex mx-auto">New User! Signup</Button>
-                    </Link>
                 </Form>
             </Card.Body>
         </Card>
-     );
+    );
 }
  
-LoginView.propTypes = {
-    onLoggedIn: PropTypes.func.isRequired,
-}
-
-export default LoginView;
+export default UpdateUser;

@@ -1,5 +1,6 @@
 .movie-poster {
-    width: 80%;
+    width: 400px;
+    height: 400px;
     object-fit: cover;
 }
 
@@ -7,4 +8,12 @@
     color: #2b2c2c;
     font-style: italic;
     font-weight: 800;
+}
+
+.btn-group {
+    display: inline-block;
+    
+    a {
+        margin-left: 10px;
+    }
 }
