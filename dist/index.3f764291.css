@@ -55,14 +55,41 @@
   font-weight: 800;
 }
 
-.btn-group {
-  display: inline-block;
-}
-.btn-group a {
+.movie-footer a {
   margin-left: 10px;
 }
 .navbar {
   margin-bottom: 10px;
+}
+.fav-movie {
+  margin-bottom: 15px;
+}
+.fav-movie figure {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+.fav-movie figure img {
+  display: block;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+.fav-movie button.btn {
+  display: block;
+  margin: auto;
+}
+
+.card {
+  margin-bottom: 15px;
 }
 * {
   box-sizing: border-box;

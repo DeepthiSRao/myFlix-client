@@ -29,7 +29,7 @@ class MovieView extends React.Component{
                     <span className="label">Description: </span>
                     <span className="value">{movie.Description}</span>
                 </div>
-                <div className='btn-group mx-2'>
+                <div className="movie-footer">
                     <Button variant="success link" onClick={() => onBackClick()}>Back</Button>                   
                     <Link to={`/directors/${movie.Director.Name}`}>
                         <Button variant="success link">Director</Button>

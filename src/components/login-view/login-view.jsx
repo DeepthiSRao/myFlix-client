@@ -39,7 +39,6 @@ const LoginView = ({onLoggedIn}) => {
         
         //form can be submitted if there are no validation errors. 
         let isValid = Object.values(errors).every(error => error.length === 0);
-        console.log(isValid);
 
         isValid && 
         axios.post(`${API_URL}/login`,{

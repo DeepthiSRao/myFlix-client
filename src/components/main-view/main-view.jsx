@@ -190,7 +190,7 @@ class MainView extends React.Component {
                     return(
                         <Col>
                             <MyNavbar />
-                            <ProfileView user={user}/> 
+                            <ProfileView user={user} movies={movies}/> 
                         </Col>
                     );
                 }} />
