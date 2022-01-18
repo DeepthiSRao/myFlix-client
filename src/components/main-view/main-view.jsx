@@ -1,26 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import MovieCard from '../movie-card/movie-card';
 import RegisterationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieView from '../movie-view/movie-view';
 import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
+import MyNavbar from '../nav-bar/nav-bar';
+import ProfileView from '../profile-view/profile-view';
+import { setMovies } from '../../actions';
 import { API_URL } from '../../utils/constant';
 import { Row,
          Col } from 'react-bootstrap';
 
 import './main-view.scss';
-import MyNavbar from '../nav-bar/nav-bar';
-import ProfileView from '../profile-view/profile-view';
+
 
 class MainView extends React.Component {
     constructor(){
         super();
         this.state = {
-            movies: [],
-            loading: false,
             user: null
         };
     }
@@ -37,17 +38,11 @@ class MainView extends React.Component {
     }
 
     getMovies(token){
-        this.setState({
-            loading: true,
-        });
         axios.get(`${API_URL}/movies`,{
             headers: { Authorization: `Bearer ${token}`}
         })
         .then( response =>{
-            this.setState({
-                movies: response.data,
-                loading: false
-            });
+            this.props.dispatch(setMovies(response.data));
         })
         .catch(error => {
             console.log(error);
@@ -71,13 +66,10 @@ class MainView extends React.Component {
             user: null
         });
     }
-    
-    if(loading){
-        return <div className="loading-message">Loading the data.....</div>;
-    }
 
     render() {
-        const { movies, loading, user } = this.state; 
+        const { movies } = this.props;
+        const { user } = this.state; 
 
         return (
             <Router>
@@ -200,4 +192,8 @@ class MainView extends React.Component {
     }
 }
 
-export default MainView;
+const mapStateToProps = ({movies}) => ({
+    movies
+});
+
+export default connect(mapStateToProps)(MainView);

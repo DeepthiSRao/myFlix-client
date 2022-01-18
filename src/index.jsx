@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { Container } from 'react-bootstrap';
+import { devToolsEnhancer } from 'redux-devtools-extension';
+import movieAppReducer from './reducer';
 import MainView from './components/main-view/main-view';
 import './index.scss';
+
+const store = createStore( movieAppReducer, devToolsEnhancer() );
 
 class MyFlixApplication extends React.Component{
     render(){
         return(
-            <Container fluid>
-                <MainView />
-            </Container>
+            <Provider store={store}>
+                <Container fluid>
+                    <MainView />
+                </Container>
+            </Provider>
         );
     }
 }
