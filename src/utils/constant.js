@@ -1,0 +1,1 @@
+export const API_URL = "https://my-flix-movie-api.herokuapp.com";

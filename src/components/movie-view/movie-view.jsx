@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Button,
+         Image } from 'react-bootstrap';
+
+import './movie-view.scss';
 
 class MovieView extends React.Component{
     render(){
         const { movie, onBackClick } = this.props;
 
         return(
-            <div className="movie-view">
-                <div className="movie-poster">
-                    <img src={movie.ImagePath} alt="movie-poster" crossOrigin="anonymous" />
-                </div>
+            <div className="movie-view d-grid gap-2">
+                <Image src={movie.ImagePath} alt="movie-poster" className="mx-auto" crossOrigin="anonymous" style={{ width: 660, height: 'auto' }}/>
                 <div className="movie-title">
                     <span className="label">Title: </span>
                     <span className="value">{movie.Title}</span>
@@ -26,7 +29,15 @@ class MovieView extends React.Component{
                     <span className="label">Description: </span>
                     <span className="value">{movie.Description}</span>
                 </div>
-                <button onClick={() => onBackClick(null) }>Back</button>
+                <div className="movie-footer">
+                    <Button variant="success link" onClick={() => onBackClick()}>Back</Button>                   
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                        <Button variant="success link">Director</Button>
+                    </Link>
+                    <Link to={`/genres/${movie.Genre.Name}`}>
+                        <Button variant="success link">Genre</Button>
+                    </Link>
+                </div>     
             </div>
         );
     }
@@ -43,8 +54,8 @@ MovieView.propTypes = {
         Director: PropTypes.shape({
             Name: PropTypes.string.isRequired,
             Bio: PropTypes.string.isRequired,
-            Birth: PropTypes.instanceOf(Date),
-            Death: PropTypes.instanceOf(Date)
+            Birth: PropTypes.string.isRequired,
+            Death: PropTypes.string
         }),
         ImagePath: PropTypes.string.isRequired,
     }).isRequired,    
