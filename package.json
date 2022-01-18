@@ -11,7 +11,14 @@
     "prop-types": "^15.8.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+<<<<<<< Updated upstream
     "scheduler": "^0.20.2"
+=======
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.2.0",
+    "scheduler": "^0.20.2",
+    "uuid": "^8.3.2"
+>>>>>>> Stashed changes
   },
   "scripts": {
     "start": "parcel",
