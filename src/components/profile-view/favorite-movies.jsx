@@ -15,7 +15,7 @@ const FavoriteMovies = ({favoriteMovies, delFavMovie}) => {
                 </Row>
                 <Row>
                     {
-                        favoriteMovies.length !== 0 ? 
+                        !!favoriteMovies ? 
                         favoriteMovies.map((movie) => (
                             <Col xs={12} md={6} lg={3} key={movie._id} className="fav-movie">   
                                 <Figure>

@@ -8,7 +8,7 @@ const VisibilityInputFilter = ({visibilityFilter, dispatch}) => {
         <Form.Control
             onChange={ e => dispatch(setFilter(e.target.value))}
             value={visibilityFilter}
-            placeholder="Filter movie by name"
+            placeholder="Serach by movie title"
         />
      );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -23,5 +24,13 @@ const DirectorView = ({director}) => {
         </div>
     );
 }
- 
-export default DirectorView;
+
+const mapStateToProps = ({movies}, ownProps) =>{
+    const director = movies.find(m => m.Director.Name === ownProps.match.params.name).Director;
+    
+    return{
+        director
+    }
+}
+
+export default connect(mapStateToProps)(DirectorView);

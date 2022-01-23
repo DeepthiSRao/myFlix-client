@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import FavoriteMovies from './favorite-movies';
 import UpdateUser from './update-user';
 import UserInfo from './user-info';
@@ -8,11 +9,7 @@ import { Row,
          Container } from 'react-bootstrap';
 import { API_URL } from '../../utils/constant';
 
-const ProfileView = ({user, movies}) => {
-    const favoriteMovies = user.FavoriteMovies.map( favMovie => (
-        movies.find(movie => (movie._id === favMovie))
-    ));
-    
+const ProfileView = ({user, favoriteMovies}) => {  
     const handleDelFavMovie = (movieId) => {
         const user = JSON.parse(localStorage.getItem('user'));
         const token = localStorage.getItem('token');
@@ -40,10 +37,26 @@ const ProfileView = ({user, movies}) => {
                 <Col xs={12} sm={8}>
                     <UpdateUser user={user} />
                 </Col>
-            </Row>
-            <FavoriteMovies favoriteMovies={favoriteMovies} delFavMovie={id => handleDelFavMovie(id)} />
+           </Row>
+            <FavoriteMovies favoriteMovies={favoriteMovies} delFavMovie={id => handleDelFavMovie(id)} /> 
         </Container>
     );
 }
 
-export default ProfileView;
+const mapStateToProps = (props, ownProps) =>{
+    const { movies } = props;
+    const { user } = ownProps;
+
+    const favoriteMovies = user && user.FavoriteMovies.map( favMovie => (
+        movies.find(movie => (movie._id === favMovie))
+    ));
+
+    console.log("fav", favoriteMovies, user);
+
+    return {
+        favoriteMovies,
+        user
+    }
+}
+
+export default connect(mapStateToProps)(ProfileView);

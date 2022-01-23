@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import VisibilityInputFilter from '../visibility-filter-input/visibility-filter-input';
 import MovieCard from '../movie-card/movie-card';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 const MovieList = ({visibilityFilter, movies}) => {
     let filteredMovies = movies;
@@ -14,17 +14,21 @@ const MovieList = ({visibilityFilter, movies}) => {
     if(!movies)
         return <div className="main-view" />;
         
-    return ( 
-        <Col md={12} style={{ margin: '1em'}}>
+    return (
+        <Row className="main-view justify-content-md-center">
+        
+            <h1>Movie List</h1>
             <VisibilityInputFilter visibilityFilter={visibilityFilter} />
+            <Col>
             {
                 filteredMovies.map(m => (
-                    <Col md={3} key={m._id}>
-                        <MovieCard movie={m} />
+                    <Col md={4} key={m._id} className="g-4 px-4">
+                        <MovieCard movie={m}/>
                     </Col>
                 ))
             }
         </Col>
+        </Row> 
      );
 }
 
@@ -33,4 +37,4 @@ const mapStateToProps = ({visibilityFilter, movies}) =>({
     movies
 });
 
-export default MovieList;
+export default connect(mapStateToProps)(MovieList);
