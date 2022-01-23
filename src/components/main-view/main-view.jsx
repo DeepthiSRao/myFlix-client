@@ -71,26 +71,28 @@ class MainView extends React.Component {
     render() {
         const { user } = this.state; 
         const isLoggedIn = !!user;
-        console.log(user);
+
         return (
             <Router>
                 <Row className="main-view justify-content-md-center">
-                <MyNavbar />
-
-                <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        render={(props) =>
-                            isLoggedIn ? <MovieList /> : <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-                        }
-                    />
-                    <PrivateRoute path="/movies/:movieId" isLoggedIn component={MovieView} /> 
-                    <PrivateRoute path="/directors/:name" isLoggedIn component={DirectorView} /> 
-                    <PrivateRoute path="/genres/:name" isLoggedIn component={GenreView} />                  
-                    <PrivateRoute path="/movie" isLoggedIn component={MovieList} /> 
-                    <PrivateRoute path="/profile" isLoggedIn component={ () => <ProfileView user={user} /> } />                       
-                </Switch>
+                    { isLoggedIn && <MyNavbar /> }
+                    <Col>
+                        <Switch>
+                            <Route
+                                exact
+                                path="/"
+                                render={(props) =>
+                                    isLoggedIn ? <MovieList /> : <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                                }
+                            />
+                            <PrivateRoute path="/register" isLoggedIn component={RegisterationView} />
+                            <PrivateRoute path="/movies/:movieId" isLoggedIn component={MovieView} /> 
+                            <PrivateRoute path="/directors/:name" isLoggedIn component={DirectorView} /> 
+                            <PrivateRoute path="/genres/:name" isLoggedIn component={GenreView} />                  
+                            <PrivateRoute path="/movie" isLoggedIn component={MovieList} /> 
+                            <PrivateRoute path="/profile" isLoggedIn component={ () => <ProfileView user={user} /> } />                       
+                        </Switch>
+                    </Col>
                 </Row>             
             </Router>
         );

@@ -1,3 +1,11 @@
 .navbar {
+    background-color: #ec0868;
     margin-bottom: 10px;
+    font-size: 1.6rem;
+    img {
+        height: 60px;
+    }
+    .navbar-collapse{
+        flex-grow: 0 !important;
+    }
 }

@@ -32,10 +32,10 @@ const ProfileView = ({user, favoriteMovies}) => {
         <Container>
             <Row>
                 <Col xs={12} sm={4}>
-                    <UserInfo name={user.Username} email={user.Email} />
+                    {!!user && <UserInfo name={user.Username} email={user.Email} />}
                 </Col>
                 <Col xs={12} sm={8}>
-                    <UpdateUser user={user} />
+                {!!user && <UpdateUser user={user} />}
                 </Col>
            </Row>
             <FavoriteMovies favoriteMovies={favoriteMovies} delFavMovie={id => handleDelFavMovie(id)} /> 
@@ -50,8 +50,6 @@ const mapStateToProps = (props, ownProps) =>{
     const favoriteMovies = user && user.FavoriteMovies.map( favMovie => (
         movies.find(movie => (movie._id === favMovie))
     ));
-
-    console.log("fav", favoriteMovies, user);
 
     return {
         favoriteMovies,

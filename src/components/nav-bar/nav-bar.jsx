@@ -1,7 +1,10 @@
 import React from 'react';
-import { Container,
-         Navbar,
-         Nav } from 'react-bootstrap';
+import { NavLink } from "react-router-dom";
+
+import logo from './logo.png';
+import { Navbar,
+         Nav,
+         Container } from 'react-bootstrap';
 
 import './nav-bar.scss';
 
@@ -12,13 +15,20 @@ const MyNavbar = ({user}) => {
     }
     
     return ( 
-        <Navbar bg="dark" variant="dark" expand="lg" className="navbar w-12 pb-2">
-            <Navbar.Brand href="/" className="me-auto">Movies</Navbar.Brand>
-            <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href={`/profile`}>Profile</Nav.Link>
-            <Nav.Link onClick={() => onLoggedOut()}>Logout</Nav.Link>
-            </Nav>
+        <Navbar variant="dark" expand="lg" className="navbar w-12 pb-2">
+            <Container fluid>
+                <Navbar.Brand href="/" className="navbar-logo me-auto">
+                    <img src={logo} alt="logo" />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                <Nav activeKey={location.pathname}>
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href={`/profile`}>Profile</Nav.Link>
+                    <Nav.Link onClick={() => onLoggedOut()}>Logout</Nav.Link>
+                </Nav>
+                </Navbar.Collapse>
+            </Container> 
         </Navbar>
     );
 }
