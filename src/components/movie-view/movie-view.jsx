@@ -31,7 +31,9 @@ const MovieView = ({movie}) =>{
                 <span className="value">{movie.Description}</span>
             </div>
             <div className="movie-footer">
-                <Button variant="success link" onClick={history.goBack}>Back</Button>                   
+                <Button variant="success link" onClick={history.goBack}>
+                    <i className="fa fa-pencil"></i> Back
+                </Button>                   
                 <Link to={`/directors/${movie.Director.Name}`}>
                     <Button variant="success link">Director</Button>
                 </Link>

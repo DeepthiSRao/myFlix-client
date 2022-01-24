@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_FILTER, SET_MOVIES } from '../utils/constant';
+import { HIDE_LOADER, SET_FILTER, SET_MOVIES, SHOW_LOADER } from '../utils/constant';
 
 const visibilityFilter = ( state = '', action ) => {
     switch(action.type){
@@ -19,7 +19,19 @@ const movies = ( state = [], action ) => {
     }
 }
 
+const loading = ( state = false, action ) => {
+    switch(action.type){
+        case SHOW_LOADER:
+            return true;
+        case HIDE_LOADER:
+            return false;
+        default:
+            return state;
+    }
+}
+
 export default movieAppReducer = combineReducers({
     visibilityFilter,
-    movies
+    movies,
+    loading
 });

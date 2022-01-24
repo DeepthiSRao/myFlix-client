@@ -9,7 +9,9 @@ import { Row,
          Container } from 'react-bootstrap';
 import { API_URL } from '../../utils/constant';
 
-const ProfileView = ({user, favoriteMovies}) => {  
+const ProfileView = ({user, favoriteMovies}) => { 
+    console.log(favoriteMovies);
+ 
     const handleDelFavMovie = (movieId) => {
         const user = JSON.parse(localStorage.getItem('user'));
         const token = localStorage.getItem('token');

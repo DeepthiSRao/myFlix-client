@@ -1,0 +1,12 @@
+.loading-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: rgba($color: #ffc4d6, $alpha: 0.5);
+    width: 100vw;
+    height: 100vh;
+    font-size: 32px;
+    color: white;
+}

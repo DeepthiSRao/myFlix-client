@@ -15,17 +15,17 @@ const MovieList = ({visibilityFilter, movies}) => {
         return <div className="main-view" />;
         
     return (
-        <>
-            <h1 className="header">Movie List</h1>
-            <VisibilityInputFilter visibilityFilter={visibilityFilter} />
+        <Row className="px-5">
+            <h1 className="text-center page-title">Movie List</h1>
+            <VisibilityInputFilter visibilityFilter={visibilityFilter}/>
             {
                 filteredMovies.map(m => (
-                    <Col md={4} key={m._id} className="g-2 px-5">
+                    <Col md={4} key={m._id} className="g-4">
                         <MovieCard movie={m}/>
                     </Col>
                 ))
             }
-        </> 
+        </Row> 
      );
 }
 

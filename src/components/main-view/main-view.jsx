@@ -10,7 +10,7 @@ import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
 import MyNavbar from '../nav-bar/nav-bar';
 import ProfileView from '../profile-view/profile-view';
-import { setMovies } from '../../actions';
+import { hideLoader, setMovies, showLoader } from '../../actions';
 import { API_URL } from '../../utils/constant';
 import { Row,
          Col } from 'react-bootstrap';
@@ -18,6 +18,7 @@ import { Row,
 import './main-view.scss';
 import PrivateRoute from './PrivateRoute';
 import MovieList from '../movie-list/movie-list';
+import PageLoader from '../page-loader/page-loader';
 
 class MainView extends React.Component {
     constructor(){
@@ -39,6 +40,7 @@ class MainView extends React.Component {
     }
 
     getMovies(token){
+        this.props.dispatch(showLoader());
         axios.get(`${API_URL}/movies`,{
             headers: { Authorization: `Bearer ${token}`}
         })
@@ -48,6 +50,9 @@ class MainView extends React.Component {
         .catch(error => {
             console.log(error);
         });
+        setTimeout(() => {
+            this.props.dispatch(hideLoader());
+        }, 2000);
     }
 
     onLoggedIn(authData){
@@ -71,11 +76,13 @@ class MainView extends React.Component {
     render() {
         const { user } = this.state; 
         const isLoggedIn = !!user;
+        const { loading } = this.props;
 
         return (
             <Router>
                 <Row className="main-view justify-content-md-center">
                     { isLoggedIn && <MyNavbar /> }
+                    { loading && <PageLoader /> }
                     <Col>
                         <Switch>
                             <Route
@@ -99,8 +106,8 @@ class MainView extends React.Component {
     }
 }
 
-const mapStateToProps = ({movies}) => ({
-    movies
+const mapStateToProps = ({loading}) => ({
+    loading
 });
 
 export default connect(mapStateToProps)(MainView);
