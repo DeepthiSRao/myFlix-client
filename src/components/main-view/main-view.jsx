@@ -24,7 +24,7 @@ class MainView extends React.Component {
     constructor(){
         super();
         this.state = {
-            user: null
+            user: null,
         };
     }
     
@@ -82,8 +82,9 @@ class MainView extends React.Component {
             <Router>
                 <Row className="main-view justify-content-md-center">
                     { isLoggedIn && <MyNavbar /> }
-                    { loading && <PageLoader /> }
-                    <Col>
+                    { loading ?
+                     <PageLoader /> :
+                    <Col className='mt-2'>
                         <Switch>
                             <Route
                                 exact
@@ -100,6 +101,7 @@ class MainView extends React.Component {
                             <PrivateRoute path="/profile" isLoggedIn component={ () => <ProfileView user={user} /> } />                       
                         </Switch>
                     </Col>
+                    }
                 </Row>             
             </Router>
         );

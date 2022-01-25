@@ -21,7 +21,6 @@
   border-radius: 5px;
 }
 .main-view {
-  display: inline-block;
   color: black;
   font-size: 1.2rem;
   cursor: pointer;
@@ -83,21 +82,59 @@
 }
 .movie-img {
   display: block;
-  height: 18rem;
+  height: 15rem;
   object-position: center;
   object-fit: cover;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  position: relative;
+  padding-top: 20px;
+}
+
+.pagination a {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid #ffc4d6;
+  color: #ec0868;
+  margin-left: 10px;
+}
+
+.pagination li:not(.disabled) a:hover {
+  background-color: bisque;
+  cursor: pointer;
+}
+
+.pagination li a {
+  font-weight: bold;
+}
+
+.pagination li.active a {
+  color: #fff;
+  background: #ec0868;
+}
+
+.pagination li.disabled a {
+  pointer-events: none;
+  color: #c6c5ca;
+  border: 1px solid #c6c5ca;
+}
 .loading-container {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 99;
   background-color: rgba(255, 196, 214, 0.5);
   width: 100vw;
   height: 100vh;
-  font-size: 32px;
   color: white;
+  overflow: hidden;
+}
+.loading-container p {
+  font-size: 2rem;
+  font-weight: 600;
 }
 @import url("https://fonts.googleapis.com/css?family=Oswald|Roboto");
 * {

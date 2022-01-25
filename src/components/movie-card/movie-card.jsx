@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, Image, 
-         Card } from 'react-bootstrap';
+import { Button, 
+         Row,
+         Card, 
+         ButtonGroup} from 'react-bootstrap';
          
 import './movie-card.scss';
 
@@ -11,7 +13,7 @@ class MovieCard extends React.Component{
         const { movie } = this.props;
         
         return(
-            <Card className="h-100 gap-1">
+            <Card className="h-100 gap-1" border="secondary">
                 <Card.Img 
                     variant="top" 
                     src={movie.ImagePath} 

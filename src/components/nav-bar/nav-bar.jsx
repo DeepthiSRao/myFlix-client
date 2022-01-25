@@ -15,7 +15,7 @@ const MyNavbar = ({user}) => {
     }
     
     return ( 
-        <Navbar variant="dark" expand="lg" className="navbar w-12 pb-2">
+        <Navbar variant="dark" expand="lg" className="navbar w-12">
             <Container fluid>
                 <Navbar.Brand href="/" className="navbar-logo me-auto">
                     <img src={logo} alt="logo" />

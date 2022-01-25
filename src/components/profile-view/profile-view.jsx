@@ -33,11 +33,11 @@ const ProfileView = ({user, favoriteMovies}) => {
     return (
         <Container>
             <Row>
-                <Col xs={12} sm={4}>
+                <Col xs={12} md={4}>
                     {!!user && <UserInfo name={user.Username} email={user.Email} />}
                 </Col>
-                <Col xs={12} sm={8}>
-                {!!user && <UpdateUser user={user} />}
+                <Col xs={12} md={8}>
+                    {!!user && <UpdateUser user={user} />}
                 </Col>
            </Row>
             <FavoriteMovies favoriteMovies={favoriteMovies} delFavMovie={id => handleDelFavMovie(id)} /> 

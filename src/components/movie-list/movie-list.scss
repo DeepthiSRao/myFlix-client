@@ -1,1 +1,35 @@
-selector-unify($selector1: , $selector2: )
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    position: relative;
+    padding-top: 20px;
+}
+   
+.pagination a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #ffc4d6;
+    color: #ec0868;
+    margin-left: 10px;
+}
+   
+.pagination li:not(.disabled) a:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.pagination li a {
+    font-weight: bold;
+}
+
+.pagination li.active a {
+    color: #fff;
+    background: #ec0868;
+}
+
+.pagination li.disabled a {
+    pointer-events: none;
+    color: rgb(198, 197, 202);
+    border: 1px solid rgb(198, 197, 202);
+}
