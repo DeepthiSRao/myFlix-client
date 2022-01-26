@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { API_URL } from '../../utils/constant';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { validate } from '../../utils/validate';
+import { Link } from 'react-router-dom';
 import { Card, 
          Form, 
          Button, 
-         Col} from 'react-bootstrap';
-import { validate } from '../../utils/validate';
-import { Link } from 'react-router-dom';
+         Col } from 'react-bootstrap';
 import './login-view.scss';
 
 const LoginView = ({onLoggedIn}) => {
@@ -105,7 +105,7 @@ const LoginView = ({onLoggedIn}) => {
                                 Login
                         </Button>
                         <Link to='/register'>
-                            <Button variant="link" className="d-flex mx-auto">New User! Signup</Button>
+                            <Button variant="link" className="d-flex mx-auto">Do not have an account?Sign Up!</Button>
                         </Link>
                     </Form>
                 </Card.Body>

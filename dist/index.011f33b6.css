@@ -63,13 +63,12 @@
   margin-bottom: 15px;
 }
 .movie-poster {
-  width: 400px;
-  height: 400px;
   object-fit: cover;
 }
 
 .label {
   color: #2b2c2c;
+  opacity: 0.8;
   font-style: italic;
   font-weight: 800;
 }

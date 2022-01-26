@@ -7,4 +7,4 @@ export const SHOW_LOADER = 'SHOW_LOADER';
 export const HIDE_LOADER = 'HIDE_LOADER';
 
 //pagination count
-export const PER_PAGE = 3;
+export const PER_PAGE = 4;

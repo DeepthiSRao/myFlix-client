@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Button, Figure, Card } from 'react-bootstrap';
+import { Row, 
+         Col,
+         Button, 
+         Figure, 
+         Card } from 'react-bootstrap';
 
 import './profile-view.scss';
 

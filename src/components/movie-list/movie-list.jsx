@@ -57,7 +57,7 @@ const MovieList = ({visibilityFilter, movies, user}) => {
             <VisibilityInputFilter visibilityFilter={visibilityFilter}/>
             {
                 filteredMovies.map(m => (
-                    <Col md={4} key={m._id} className="g-4">
+                    <Col md={3} key={m._id} className="g-4">
                         <MovieCard movie={m} liked={userFavList.includes(m._id)} addFavMovie={(movieId) => addMovieToUserList(movieId)} />
                     </Col>
                 ))

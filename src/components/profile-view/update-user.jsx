@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { API_URL } from '../../utils/constant';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Card, 
          Form, 

@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MovieCard from '../movie-card/movie-card';
 import RegisterationView from '../registration-view/registration-view';
 import LoginView from '../login-view/login-view';
 import MovieView from '../movie-view/movie-view';
@@ -10,15 +9,15 @@ import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
 import MyNavbar from '../nav-bar/nav-bar';
 import ProfileView from '../profile-view/profile-view';
-import { hideLoader, setMovies, showLoader } from '../../actions';
-import { API_URL } from '../../utils/constant';
-import { Row,
-         Col } from 'react-bootstrap';
-
-import './main-view.scss';
-import PrivateRoute from './PrivateRoute';
 import MovieList from '../movie-list/movie-list';
 import PageLoader from '../page-loader/page-loader';
+import { hideLoader, setMovies, showLoader } from '../../actions';
+import { API_URL } from '../../utils/constant';
+import PrivateRoute from './PrivateRoute';
+
+import { Row,
+    Col } from 'react-bootstrap';
+import './main-view.scss';
 
 class MainView extends React.Component {
     constructor(){

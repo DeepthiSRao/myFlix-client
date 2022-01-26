@@ -1,23 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Button, 
+         Card } from 'react-bootstrap';
 
 const GenreView = ({genre}) => {
     return ( 
-        <div className="genre-view d-grid gap-2">
-            <div className="genre-name">
-                <span className="label">Name: </span>
-                <span className="value">{genre.Name}</span>
-            </div>
-            <div className="genre-desc">
-                <span className="label">Description: </span>
-                <span className="value">{genre.Description}</span>
-            </div>
-            <Link to='/'>
-                <Button variant="link">Back to Movie List</Button>
-            </Link>
-        </div>
+        <Card className="mt-4 mx-auto" style={{ width: "60%" }}>
+            <Card.Body>
+                <div className="genre-name">
+                    <span className="label">Name: </span>
+                    <span className="value">{genre.Name}</span>
+                </div>
+                <div className="genre-desc">
+                    <span className="label">Description: </span>
+                    <span className="value">{genre.Description}</span>
+                </div>
+                <Link to='/'>
+                    <Button variant="success link mt-3">Back to Movie List</Button>
+                </Link>
+            </Card.Body>
+        </Card>
     );
 }
 
