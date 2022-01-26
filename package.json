@@ -4,6 +4,9 @@
   "description": "",
   "default": "src/index.html",
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "axios": "^0.24.0",
     "font-awesome": "^4.7.0",
     "js-tokens": "^4.0.0",

@@ -18,7 +18,7 @@ const FavoriteMovies = ({favoriteMovies, delFavMovie}) => {
                         !!favoriteMovies ? 
                         favoriteMovies.map((movie) => (
                             !!movie &&
-                            <Col xs={12} md={6} lg={3} key={movie._id} className="fav-movie">   
+                            <Col xs={12} md={6} lg={4} key={movie._id} className="fav-movie">   
                                 <Figure>
                                     <Link to={`/movies/${movie._id}`}>
                                         <Figure.Image 

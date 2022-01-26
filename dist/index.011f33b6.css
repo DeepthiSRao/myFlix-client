@@ -10,10 +10,7 @@
   border-radius: 5px;
 }
 .login-container {
-  margin: auto;
   margin-top: 50px;
-  max-width: 60%;
-  min-width: 480px;
 }
 
 .login-btn {
@@ -82,9 +79,21 @@
 }
 .movie-img {
   display: block;
-  height: 15rem;
+  height: 18rem;
   object-position: center;
   object-fit: cover;
+}
+
+.card-footer {
+  display: flex;
+  background-color: #fff !important;
+  border-top: none !important;
+}
+.card-footer .btn:disabled {
+  opacity: 1;
+}
+.card-footer .fav-btn {
+  margin-left: auto;
 }
 .pagination {
   display: flex;

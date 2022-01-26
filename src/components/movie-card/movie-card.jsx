@@ -2,33 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, 
-         Row,
-         Card, 
-         ButtonGroup} from 'react-bootstrap';
+         Card } from 'react-bootstrap';
          
+import FavouriteBtn from './favourite-btn';
 import './movie-card.scss';
 
-class MovieCard extends React.Component{
-    render(){
-        const { movie } = this.props;
-        
-        return(
-            <Card className="h-100 gap-1" border="secondary">
-                <Card.Img 
-                    variant="top" 
-                    src={movie.ImagePath} 
-                    crossOrigin="anonymous" 
-                    className="movie-img" />
-                <Card.Body>
-                    <Card.Title as="h3">{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Description}</Card.Text>
-                    <Link to={`/movies/${movie._id}`}>
-                        <Button variant="outline-primary link">Open</Button>
-                    </Link>
-                </Card.Body>
-            </Card>
-        );
-    }
+const MovieCard = ({ movie, liked, addFavMovie }) => {
+    return(
+        <Card className="h-100 gap-1" border="secondary">
+            <Card.Img 
+                variant="top" 
+                src={movie.ImagePath} 
+                crossOrigin="anonymous" 
+                className="movie-img" />
+            <Card.Body>
+                <Card.Title as="h3">{movie.Title}</Card.Title>
+                <Card.Text>{movie.Description}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+                <Link to={`/movies/${movie._id}`}>
+                    <Button variant="outline-primary link">Open</Button>
+                </Link>
+                <FavouriteBtn liked={liked} addFavMovie={() => addFavMovie(movie._id)} />
+            </Card.Footer>
+        </Card>
+    );
 }
 
 MovieCard.propTypes = {

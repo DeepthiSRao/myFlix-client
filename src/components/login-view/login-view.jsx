@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Card, 
          Form, 
-         Button } from 'react-bootstrap';
+         Button, 
+         Col} from 'react-bootstrap';
 import { validate } from '../../utils/validate';
 import { Link } from 'react-router-dom';
 import './login-view.scss';
@@ -56,58 +57,60 @@ const LoginView = ({onLoggedIn}) => {
     }
 
     return ( 
-        <Card className="login-container">
-            <Card.Body>
-                <Card.Title as="h2" className="text-center">Login Page</Card.Title>
-                {message && (
-                        <div className="form-group">
-                            <div className="alert alert-danger my-1 py-2" role="alert">
-                                {message}
+        <Col md={8} lg={4} className="mx-auto">
+            <Card className="login-container">
+                <Card.Body>
+                    <Card.Title as="h2" className="text-center">Login Page</Card.Title>
+                    {message && (
+                            <div className="form-group">
+                                <div className="alert alert-danger my-1 py-2" role="alert">
+                                    {message}
+                                </div>
                             </div>
-                        </div>
-                )}
-                <Form>
-                    <Form.Group controlId="username" className="mb-3">
-                        <Form.Label>Username: </Form.Label>
-                        <Form.Control 
-                            type="text" 
-                            name="username" 
-                            value={userData.username || ''}
-                            onChange={handleChange}
-                            placeholder="Enter username here"
-                            isInvalid={!!errors.username}
-                            required />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.username}
-                        </Form.Control.Feedback>
-                    </Form.Group>                           
-                    <Form.Group controlId="password" className="mb-3"> 
-                        <Form.Label>Password: </Form.Label> 
-                        <Form.Control 
-                            type="password" 
-                            name="password" 
-                            value={userData.password || ''}
-                            onChange={handleChange}
-                            placeholder="Enter password here"
-                            isInvalid={!!errors.password}
-                            required />                       
-                        <Form.Control.Feedback type="invalid">
-                            {errors.password}
-                        </Form.Control.Feedback>
-                    </Form.Group>
-                    <Button 
-                        type="submit"
-                        className="login-btn"
-                        disabled={!userData.email && !userData.password}
-                        onClick={handleSubmit}>
-                            Login
-                    </Button>
-                    <Link to='/register'>
-                        <Button variant="link" className="d-flex mx-auto">New User! Signup</Button>
-                    </Link>
-                </Form>
-            </Card.Body>
-        </Card>
+                    )}
+                    <Form>
+                        <Form.Group controlId="username" className="mb-3">
+                            <Form.Label>Username: </Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                name="username" 
+                                value={userData.username || ''}
+                                onChange={handleChange}
+                                placeholder="Enter username here"
+                                isInvalid={!!errors.username}
+                                required />
+                            <Form.Control.Feedback type="invalid">
+                                {errors.username}
+                            </Form.Control.Feedback>
+                        </Form.Group>                           
+                        <Form.Group controlId="password" className="mb-3"> 
+                            <Form.Label>Password: </Form.Label> 
+                            <Form.Control 
+                                type="password" 
+                                name="password" 
+                                value={userData.password || ''}
+                                onChange={handleChange}
+                                placeholder="Enter password here"
+                                isInvalid={!!errors.password}
+                                required />                       
+                            <Form.Control.Feedback type="invalid">
+                                {errors.password}
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                        <Button 
+                            type="submit"
+                            className="login-btn"
+                            disabled={!userData.email && !userData.password}
+                            onClick={handleSubmit}>
+                                Login
+                        </Button>
+                        <Link to='/register'>
+                            <Button variant="link" className="d-flex mx-auto">New User! Signup</Button>
+                        </Link>
+                    </Form>
+                </Card.Body>
+            </Card>
+        </Col>
      );
 }
  

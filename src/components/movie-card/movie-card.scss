@@ -1,6 +1,18 @@
 .movie-img {
     display: block;
-    height: 15rem;
+    height: 18rem;
     object-position: center;
     object-fit: cover;
+}
+
+.card-footer {
+    display: flex;
+    background-color: #fff !important;
+    border-top: none !important;
+    .btn:disabled {
+        opacity: 1;
+    }
+    .fav-btn {
+        margin-left: auto;
+    }
 }
