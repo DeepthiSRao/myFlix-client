@@ -5,4 +5,15 @@
 .login-btn {
     width: 100%;
     border-radius: 5px;
+    font-size: 1.5rem !important;
+    background-color: #ec0868 !important;
+    border-color: #ffc4d6 !important;
+}
+
+.title {
+    color: #ec0868;
+    font-style: italic;
+    text-shadow: 2px 2px #ffc4d6;
+    font-weight: 800;
+    margin-bottom: 40px !important;
 }

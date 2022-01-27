@@ -69,7 +69,7 @@ const RegisterationView = () => {
         <Col md={8} lg={6} className="mx-auto">
             <Card className="reg-container">
                 <Card.Body>
-                    <Card.Title as="h2" className="text-center">Registration Page</Card.Title>
+                <Card.Title as="h1" className="text-center title">WELCOME TO MYFLIXMOVIES</Card.Title>
                     {message && (
                             <div className="form-group">
                                 <div className="alert alert-danger my-1 py-2" role="alert">

@@ -8,6 +8,7 @@ import { Card,
          Form, 
          Button, 
          Col } from 'react-bootstrap';
+import logo from '../nav-bar/logo.png';
 import './login-view.scss';
 
 const LoginView = ({onLoggedIn}) => {
@@ -60,7 +61,7 @@ const LoginView = ({onLoggedIn}) => {
         <Col md={8} lg={4} className="mx-auto">
             <Card className="login-container">
                 <Card.Body>
-                    <Card.Title as="h2" className="text-center">Login Page</Card.Title>
+                    <Card.Title as="h1" className="text-center title">WELCOME TO MYFLIXMOVIES</Card.Title>
                     {message && (
                             <div className="form-group">
                                 <div className="alert alert-danger my-1 py-2" role="alert">
