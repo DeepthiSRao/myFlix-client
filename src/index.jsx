@@ -4,12 +4,12 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import movieAppReducer from './reducer';
+import reducer from './reducer';
 import MainView from './components/main-view/main-view';
 import 'font-awesome/css/font-awesome.min.css';
 import './index.scss';
 
-const store = createStore( movieAppReducer, devToolsEnhancer() );
+const store = createStore( reducer, devToolsEnhancer() );
 
 class MyFlixApplication extends React.Component{
     render(){

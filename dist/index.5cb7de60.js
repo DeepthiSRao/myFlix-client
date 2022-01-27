@@ -37352,7 +37352,7 @@ const loading = (state = false, action)=>{
             return state;
     }
 };
-exports.default = movieAppReducer = _redux.combineReducers({
+exports.default = _redux.combineReducers({
     visibilityFilter,
     movies,
     loading

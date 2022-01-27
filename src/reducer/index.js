@@ -30,7 +30,7 @@ const loading = ( state = false, action ) => {
     }
 }
 
-export default movieAppReducer = combineReducers({
+export default combineReducers({
     visibilityFilter,
     movies,
     loading

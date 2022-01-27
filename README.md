@@ -33,4 +33,4 @@ In the project directory, you can run:
 - `npm start`
 
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3387a676-8d07-4bdd-a6a5-36604038bde6/deploy-status)](https://app.netlify.com/sites/myflix-react-app/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c620301c-15de-48db-a787-c14c3896f93f/deploy-status)](https://app.netlify.com/sites/myflix-react-app/deploys)
