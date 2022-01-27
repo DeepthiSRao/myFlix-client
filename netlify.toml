@@ -2,5 +2,10 @@
 from = "/*"
 to = "/index.html"
 status = 200
-force = true
-headers = {Access-Control-Allow-Origin: “*”}
+
+[[headers]]
+for = "/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Access-Control-Allow-Headers = "*"
+Access-Control-Allow-Methods = "GET"
