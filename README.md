@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 6. Users are allowed to favorite/unfavorite a movie. 
 
 ### Project live demo link : 
-![Markdown Logo](https://raw.githubusercontent.com/DeepthiSRao/myFlix-client/tree/Exercise_3.8/src/images/HomePage.png)
+![Markdown Logo](/src/images/HomePage.png)
 
 ## Installation
 
