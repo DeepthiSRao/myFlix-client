@@ -42118,7 +42118,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../../utils/constant":"cR822","prop-types":"1tgq3","axios":"iYoWk","../../utils/validate":"jdxGU","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","./login-view.scss":"lS4BK","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","../nav-bar/logo.png":"dsyJD"}],"lS4BK":[function() {},{}],"dsyJD":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../../utils/constant":"cR822","prop-types":"1tgq3","axios":"iYoWk","../../utils/validate":"jdxGU","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","../nav-bar/logo.png":"dsyJD","./login-view.scss":"lS4BK","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"dsyJD":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "logo.af7ca2ce.png";
 
 },{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
@@ -42156,7 +42156,7 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"ikZdr":[function(require,module,exports) {
+},{}],"lS4BK":[function() {},{}],"ikZdr":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3741 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
