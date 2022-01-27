@@ -8,6 +8,7 @@ const GenreView = ({genre}) => {
     return ( 
         <Card className="mt-4 mx-auto" style={{ width: "60%" }}>
             <Card.Body>
+                <Card.Title as="h4" className="text-center label">Genre Info</Card.Title>
                 <div className="genre-name">
                     <span className="label">Name: </span>
                     <span className="value">{genre.Name}</span>
