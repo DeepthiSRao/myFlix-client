@@ -1,4 +1,9 @@
 [[redirects]]
 from = "/*"
-to = "https://resizing.flixster.com/:splat"
+to = "/index.html"
 status = 200
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
