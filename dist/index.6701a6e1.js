@@ -42470,21 +42470,24 @@ var _reactRouterDom = require("react-router-dom");
 var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
 var _reactBootstrap = require("react-bootstrap");
-const DirectorView = ({ director  })=>{
+var _s = $RefreshSig$();
+const DirectorView = ({ director , moviesByDirector  })=>{
+    _s();
+    const history = _reactRouterDom.useHistory();
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
         className: "mt-4 mx-auto",
         style: {
-            width: "60%"
+            width: "80%"
         },
         __source: {
             fileName: "src/components/director-view/director-view.jsx",
-            lineNumber: 10
+            lineNumber: 16
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
             __source: {
                 fileName: "src/components/director-view/director-view.jsx",
-                lineNumber: 11
+                lineNumber: 17
             },
             __self: undefined,
             children: [
@@ -42493,7 +42496,7 @@ const DirectorView = ({ director  })=>{
                     className: "text-center label",
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 12
+                        lineNumber: 18
                     },
                     __self: undefined,
                     children: "Personal Info"
@@ -42502,7 +42505,7 @@ const DirectorView = ({ director  })=>{
                     className: "director-name",
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 13
+                        lineNumber: 19
                     },
                     __self: undefined,
                     children: [
@@ -42510,7 +42513,7 @@ const DirectorView = ({ director  })=>{
                             className: "label",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 14
+                                lineNumber: 20
                             },
                             __self: undefined,
                             children: "Name: "
@@ -42519,7 +42522,7 @@ const DirectorView = ({ director  })=>{
                             className: "value",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 15
+                                lineNumber: 21
                             },
                             __self: undefined,
                             children: director.Name
@@ -42530,7 +42533,7 @@ const DirectorView = ({ director  })=>{
                     className: "director-bio",
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 17
+                        lineNumber: 23
                     },
                     __self: undefined,
                     children: [
@@ -42538,7 +42541,7 @@ const DirectorView = ({ director  })=>{
                             className: "label",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 18
+                                lineNumber: 24
                             },
                             __self: undefined,
                             children: "Biography: "
@@ -42547,7 +42550,7 @@ const DirectorView = ({ director  })=>{
                             className: "value",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 19
+                                lineNumber: 25
                             },
                             __self: undefined,
                             children: director.Bio
@@ -42558,7 +42561,7 @@ const DirectorView = ({ director  })=>{
                     className: "director-birthyear",
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 21
+                        lineNumber: 27
                     },
                     __self: undefined,
                     children: [
@@ -42566,7 +42569,7 @@ const DirectorView = ({ director  })=>{
                             className: "label",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 22
+                                lineNumber: 28
                             },
                             __self: undefined,
                             children: "Birth: "
@@ -42575,40 +42578,159 @@ const DirectorView = ({ director  })=>{
                             className: "value",
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 23
+                                lineNumber: 29
                             },
                             __self: undefined,
                             children: _momentDefault.default(director.Birth).format('MM-DD-YYYY')
                         })
                     ]
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                    to: "/",
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "text-center align-items-end pt-4",
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 25
+                        lineNumber: 31
                     },
                     __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                        variant: "success link mt-3",
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Button, {
+                            variant: "success link",
+                            onClick: history.goBack,
+                            __source: {
+                                fileName: "src/components/director-view/director-view.jsx",
+                                lineNumber: 32
+                            },
+                            __self: undefined,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsx("i", {
+                                    className: "fa fa-arrow-left",
+                                    __source: {
+                                        fileName: "src/components/director-view/director-view.jsx",
+                                        lineNumber: 33
+                                    },
+                                    __self: undefined
+                                }),
+                                " Back"
+                            ]
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                            to: "/",
+                            __source: {
+                                fileName: "src/components/director-view/director-view.jsx",
+                                lineNumber: 35
+                            },
+                            __self: undefined,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                variant: "success link mx-2",
+                                __source: {
+                                    fileName: "src/components/director-view/director-view.jsx",
+                                    lineNumber: 36
+                                },
+                                __self: undefined,
+                                children: "Back to Movie List"
+                            })
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Title, {
+                    as: "h4",
+                    className: "label pt-5",
+                    __source: {
+                        fileName: "src/components/director-view/director-view.jsx",
+                        lineNumber: 39
+                    },
+                    __self: undefined,
+                    children: [
+                        "Movies dirrected by ",
+                        director.Name,
+                        " "
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+                    __source: {
+                        fileName: "src/components/director-view/director-view.jsx",
+                        lineNumber: 40
+                    },
+                    __self: undefined,
+                    children: !!moviesByDirector ? moviesByDirector.map((movie)=>!!movie && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                            xs: 12,
+                            md: 6,
+                            lg: 4,
+                            className: "fav-movie",
+                            __source: {
+                                fileName: "src/components/director-view/director-view.jsx",
+                                lineNumber: 45
+                            },
+                            __self: undefined,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Figure, {
+                                __source: {
+                                    fileName: "src/components/director-view/director-view.jsx",
+                                    lineNumber: 46
+                                },
+                                __self: undefined,
+                                children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Link, {
+                                    to: `/movies/${movie._id}`,
+                                    __source: {
+                                        fileName: "src/components/director-view/director-view.jsx",
+                                        lineNumber: 47
+                                    },
+                                    __self: undefined,
+                                    children: [
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Figure.Image, {
+                                            src: movie.ImagePath,
+                                            alt: movie.Title,
+                                            crossOrigin: "anonymous",
+                                            __source: {
+                                                fileName: "src/components/director-view/director-view.jsx",
+                                                lineNumber: 48
+                                            },
+                                            __self: undefined
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Figure.Caption, {
+                                            __source: {
+                                                fileName: "src/components/director-view/director-view.jsx",
+                                                lineNumber: 53
+                                            },
+                                            __self: undefined,
+                                            children: movie.Title
+                                        })
+                                    ]
+                                })
+                            })
+                        }, movie._id)
+                    ) : /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                        xs: 12,
                         __source: {
                             fileName: "src/components/director-view/director-view.jsx",
-                            lineNumber: 26
+                            lineNumber: 60
                         },
                         __self: undefined,
-                        children: "Back to Movie List"
+                        children: /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                            __source: {
+                                fileName: "src/components/director-view/director-view.jsx",
+                                lineNumber: 61
+                            },
+                            __self: undefined,
+                            children: "No movies"
+                        })
                     })
                 })
             ]
         })
     }));
 };
+_s(DirectorView, "9cZfZ04734qoCGIctmKX7+sX6eU=", false, function() {
+    return [_reactRouterDom.useHistory];
+});
 _c = DirectorView;
 const mapStateToProps = ({ movies  }, ownProps)=>{
+    const moviesByDirector = movies.filter((m)=>m.Director.Name === ownProps.match.params.name
+    );
     const director = movies.find((m)=>m.Director.Name === ownProps.match.params.name
     ).Director;
     return {
-        director
+        director,
+        moviesByDirector
     };
 };
 exports.default = _reactRedux.connect(mapStateToProps)(DirectorView);
@@ -46357,21 +46479,24 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRedux = require("react-redux");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
-const GenreView = ({ genre  })=>{
+var _s = $RefreshSig$();
+const GenreView = ({ genre , moviesByGenre  })=>{
+    _s();
+    const history = _reactRouterDom.useHistory();
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
         className: "mt-4 mx-auto",
         style: {
-            width: "60%"
+            width: "80%"
         },
         __source: {
             fileName: "src/components/genre-view/genre-view.jsx",
-            lineNumber: 9
+            lineNumber: 15
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
             __source: {
                 fileName: "src/components/genre-view/genre-view.jsx",
-                lineNumber: 10
+                lineNumber: 16
             },
             __self: undefined,
             children: [
@@ -46380,7 +46505,7 @@ const GenreView = ({ genre  })=>{
                     className: "text-center label",
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 11
+                        lineNumber: 17
                     },
                     __self: undefined,
                     children: "Genre Info"
@@ -46389,7 +46514,7 @@ const GenreView = ({ genre  })=>{
                     className: "genre-name",
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 12
+                        lineNumber: 18
                     },
                     __self: undefined,
                     children: [
@@ -46397,7 +46522,7 @@ const GenreView = ({ genre  })=>{
                             className: "label",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 13
+                                lineNumber: 19
                             },
                             __self: undefined,
                             children: "Name: "
@@ -46406,7 +46531,7 @@ const GenreView = ({ genre  })=>{
                             className: "value",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 14
+                                lineNumber: 20
                             },
                             __self: undefined,
                             children: genre.Name
@@ -46417,7 +46542,7 @@ const GenreView = ({ genre  })=>{
                     className: "genre-desc",
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 16
+                        lineNumber: 22
                     },
                     __self: undefined,
                     children: [
@@ -46425,7 +46550,7 @@ const GenreView = ({ genre  })=>{
                             className: "label",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 17
+                                lineNumber: 23
                             },
                             __self: undefined,
                             children: "Description: "
@@ -46434,40 +46559,158 @@ const GenreView = ({ genre  })=>{
                             className: "value",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 18
+                                lineNumber: 24
                             },
                             __self: undefined,
                             children: genre.Description
                         })
                     ]
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                    to: "/",
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "text-center align-items-end pt-4",
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 20
+                        lineNumber: 26
                     },
                     __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                        variant: "success link mt-3",
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Button, {
+                            variant: "success link",
+                            onClick: history.goBack,
+                            __source: {
+                                fileName: "src/components/genre-view/genre-view.jsx",
+                                lineNumber: 27
+                            },
+                            __self: undefined,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsx("i", {
+                                    className: "fa fa-arrow-left",
+                                    __source: {
+                                        fileName: "src/components/genre-view/genre-view.jsx",
+                                        lineNumber: 28
+                                    },
+                                    __self: undefined
+                                }),
+                                " Back"
+                            ]
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                            to: "/",
+                            __source: {
+                                fileName: "src/components/genre-view/genre-view.jsx",
+                                lineNumber: 30
+                            },
+                            __self: undefined,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                variant: "success link mx-2",
+                                __source: {
+                                    fileName: "src/components/genre-view/genre-view.jsx",
+                                    lineNumber: 31
+                                },
+                                __self: undefined,
+                                children: "Back to Movie List"
+                            })
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Title, {
+                    as: "h4",
+                    className: "label pt-5",
+                    __source: {
+                        fileName: "src/components/genre-view/genre-view.jsx",
+                        lineNumber: 34
+                    },
+                    __self: undefined,
+                    children: [
+                        genre.Name,
+                        " Movies"
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+                    __source: {
+                        fileName: "src/components/genre-view/genre-view.jsx",
+                        lineNumber: 35
+                    },
+                    __self: undefined,
+                    children: !!moviesByGenre ? moviesByGenre.map((movie)=>!!movie && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                            xs: 12,
+                            md: 6,
+                            lg: 4,
+                            className: "fav-movie",
+                            __source: {
+                                fileName: "src/components/genre-view/genre-view.jsx",
+                                lineNumber: 40
+                            },
+                            __self: undefined,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Figure, {
+                                __source: {
+                                    fileName: "src/components/genre-view/genre-view.jsx",
+                                    lineNumber: 41
+                                },
+                                __self: undefined,
+                                children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Link, {
+                                    to: `/movies/${movie._id}`,
+                                    __source: {
+                                        fileName: "src/components/genre-view/genre-view.jsx",
+                                        lineNumber: 42
+                                    },
+                                    __self: undefined,
+                                    children: [
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Figure.Image, {
+                                            src: movie.ImagePath,
+                                            alt: movie.Title,
+                                            crossOrigin: "anonymous",
+                                            __source: {
+                                                fileName: "src/components/genre-view/genre-view.jsx",
+                                                lineNumber: 43
+                                            },
+                                            __self: undefined
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Figure.Caption, {
+                                            __source: {
+                                                fileName: "src/components/genre-view/genre-view.jsx",
+                                                lineNumber: 48
+                                            },
+                                            __self: undefined,
+                                            children: movie.Title
+                                        })
+                                    ]
+                                })
+                            })
+                        }, movie._id)
+                    ) : /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                        xs: 12,
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 21
+                            lineNumber: 55
                         },
                         __self: undefined,
-                        children: "Back to Movie List"
+                        children: /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                            __source: {
+                                fileName: "src/components/genre-view/genre-view.jsx",
+                                lineNumber: 56
+                            },
+                            __self: undefined,
+                            children: "No movies"
+                        })
                     })
                 })
             ]
         })
     }));
 };
+_s(GenreView, "9cZfZ04734qoCGIctmKX7+sX6eU=", false, function() {
+    return [_reactRouterDom.useHistory];
+});
 _c = GenreView;
 const mapStateToProps = ({ movies  }, ownProps)=>{
+    const moviesByGenre = movies.filter((m)=>m.Genre.Name === ownProps.match.params.name
+    );
     const genre = movies.find((m)=>m.Genre.Name === ownProps.match.params.name
     ).Genre;
     return {
-        genre
+        genre,
+        moviesByGenre
     };
 };
 exports.default = _reactRedux.connect(mapStateToProps)(GenreView);
