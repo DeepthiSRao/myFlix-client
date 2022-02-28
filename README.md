@@ -17,8 +17,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ![Markdown Logo](/src/images/HomePage.png)
 
 ## Reference for my backend server implementation,
-### Server side live demo link: https://my-flix-movie-api.herokuapp.com/
-### Server side code link: https://github.com/DeepthiSRao/movie_api
+Server side live demo link: https://my-flix-movie-api.herokuapp.com/ <br>
+            Code link: https://github.com/DeepthiSRao/movie_api
 
 ## Installation
 
