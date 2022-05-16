@@ -16,8 +16,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Project live demo link : https://myflix-react-app.netlify.app/
 ![Markdown Logo](/src/images/HomePage.png)
 
-### Server side live demo link: https://my-flix-movie-api.herokuapp.com/
-### Server side code link: https://my-flix-movie-api.herokuapp.com/
+## Reference for my backend server implementation,
+Server side live demo link: https://my-flix-movie-api.herokuapp.com/ <br>
+            Code link: https://github.com/DeepthiSRao/movie_api
 
 ## Installation
 
