@@ -36,7 +36,7 @@ const DirectorView = ({director, moviesByDirector}) => {
                         <Button variant="success link mx-2">Back to Movie List</Button>
                     </Link>
                 </div>
-                <Card.Title as="h4" className="label pt-5">Movies dirrected by {director.Name} </Card.Title>
+                <Card.Title as="h4" className="label pt-5 text-center">Movies directed by {director.Name} </Card.Title>
                     <Row>
                         {
                             !!moviesByDirector ? 

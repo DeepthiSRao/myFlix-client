@@ -11,9 +11,10 @@ import './movie-list.scss';
 const MovieList = ({visibilityFilter, movies, user}) => {
     let [pagination, setPagination] = React.useState({
                                         page: 0,
-                                        pages: Math.floor(movies.length / perPage),
+                                        pages: Math.floor(movies.length / perPage) + 1,
                                     });
-
+    
+                                    console.log(movies, pagination.pages);
     let filteredMovies = movies.slice(pagination.page * perPage, (pagination.page + 1) * perPage);
     let userFavList = user.FavoriteMovies;
 
@@ -57,7 +58,7 @@ const MovieList = ({visibilityFilter, movies, user}) => {
             <VisibilityInputFilter visibilityFilter={visibilityFilter}/>
             {
                 filteredMovies.map(m => (
-                    <Col md={3} key={m._id} className="g-4">
+                    <Col md={4} key={m._id} className="g-4">
                         <MovieCard movie={m} liked={userFavList.includes(m._id)} addFavMovie={(movieId) => addMovieToUserList(movieId)} />
                     </Col>
                 ))

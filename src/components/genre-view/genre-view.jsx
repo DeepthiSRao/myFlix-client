@@ -31,7 +31,7 @@ const GenreView = ({genre, moviesByGenre}) => {
                             <Button variant="success link mx-2">Back to Movie List</Button>
                         </Link>
                     </div>
-                    <Card.Title as="h4" className="label pt-5">{genre.Name} Movies</Card.Title>
+                    <Card.Title as="h4" className="label pt-5 text-center">{genre.Name} Movies</Card.Title>
                     <Row>
                         {
                             !!moviesByGenre ? 
